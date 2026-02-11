@@ -1,0 +1,160 @@
+:root {
+    --text: #2b2b2b;
+    --muted: rgba(0, 0, 0, 0.6);
+
+    --card: rgba(255, 255, 255, 0.88);
+    --cardBorder: rgba(0, 0, 0, 0.06);
+
+    --pink: #ff4fa3;
+    --blue: #2b8cff;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    color: var(--text);
+    background: linear-gradient(135deg, #ffe8f3 0%, #e0f7ff 50%, #fff5d6 100%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 255, 255, 0.55) 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 255, 255, 0.45) 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 60% 80%,
+            rgba(255, 255, 255, 0.45) 0%,
+            transparent 40%
+        );
+    pointer-events: none;
+}
+
+#root {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.person_card {
+    background: var(--card);
+    border: 1px solid var(--cardBorder);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease;
+    text-align: center;
+}
+
+.person_card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.person_card p {
+    margin: 0 0 0.6rem;
+    color: var(--muted);
+}
+
+.name {
+    display: inline-block;
+    margin-top: 0.25rem;
+    font-size: 2.3rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    color: var(--text);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.12);
+    padding-bottom: 0.2rem;
+}
+
+h4 {
+    margin: 0.8rem 0 1.1rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.counter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock_unit {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 0.75rem 0.95rem;
+    min-width: 78px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.clock_value {
+    display: block;
+    font-family:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", monospace;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--pink);
+    text-shadow: 0 0 10px rgba(255, 79, 163, 0.35);
+}
+
+.clock_label {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.clock_sep {
+    font-family: ui-monospace, monospace;
+    font-weight: 900;
+    opacity: 0.5;
+    transform: translateY(-2px);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%,
+    60% {
+        opacity: 0.55;
+    }
+    61%,
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.extra_text {
+    margin-top: 1rem;
+    font-weight: 900;
+}
